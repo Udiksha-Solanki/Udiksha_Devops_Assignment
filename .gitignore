@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+.env
+.venv
+env/
+venv/
+pip-log.txt
+*.log
+
+# ML models / datasets
+*.pkl
+*.h5
+*.joblib
+*.npy
+*.npz
+*.csv
+*.xlsx
+
+# FastAPI & Uvicorn
+instance/
+*.db
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VSCode / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Mac & Windows system files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+
+# Git
+.git/
+
+
