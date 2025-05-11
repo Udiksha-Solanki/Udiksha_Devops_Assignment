@@ -28,39 +28,36 @@ class ShipmentFeatures(BaseModel):
     Weight_in_gms: int
 
 # Prediction endpoint
-@app.post("/predict")
+@app.post('/predict')
 def predict(features: ShipmentFeatures = Body(
     ...,
-    examples={
-        "valid_input": {
-            "summary": "Example shipment data",
-            "value": {
-                "Warehouse_block": "A",
-                "Mode_of_Shipment": "Ship",
-                "Customer_care_calls": 3,
-                "Customer_rating": 4,
-                "Cost_of_the_Product": 250,
-                "Prior_purchases": 2,
-                "Product_importance": "low",
-                "Gender": "F",
-                "Discount_offered": 20,
-                "Weight_in_gms": 1500
-            }
-        }
+    example={
+        "Warehouse_block": "A",
+        "Mode_of_Shipment": "Ship",
+        "Customer_care_calls": 3,
+        "Customer_rating": 4,
+        "Cost_of_the_Product": 250,
+        "Prior_purchases": 2,
+        "Product_importance": "low",
+        "Gender": "F",
+        "Discount_offered": 20,
+        "Weight_in_gms": 1500
     }
 )):
-    # Convert input to DataFrame
+    # Convert to dataframe
     data = pd.DataFrame([features.dict()])
 
-    # Encode categorical columns
+    # Encode categorical variables
     for col in ['Warehouse_block', 'Mode_of_Shipment', 'Product_importance', 'Gender']:
         le = encoder[col]
         data[col] = le.transform(data[col])
 
-    # Run prediction
+    # Predict
     prediction = model.predict(data)
 
-    # Map prediction to label
-    prediction_label = "On Time" if prediction[0] == 1 else "Late"
+    # Map numeric prediction back to label
+    prediction_label = 'On Time' if prediction[0] == 1 else 'Late'
 
     return {"prediction": prediction_label}
+
+
