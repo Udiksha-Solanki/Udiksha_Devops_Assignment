@@ -13,10 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy everything else (app + model files) into the container
 COPY . .
 
-# Copy model.pkl and label_encoders.pkl to the app directory
-COPY model.pkl /app/model.pkl
-COPY label_encoders.pkl /app/label_encoders.pkl
-
 # Expose FastAPI default port
 EXPOSE 1000
 
