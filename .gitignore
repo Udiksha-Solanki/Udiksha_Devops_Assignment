@@ -15,9 +15,9 @@ pip-log.txt
 # ML models / datasets
 !model.pkl
 !label_encoders.pkl
-*.pkl
+
 *.h5
-*.joblib
+
 *.npy
 *.npz
 *.csv
