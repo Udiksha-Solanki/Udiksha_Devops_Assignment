@@ -13,6 +13,8 @@ pip-log.txt
 *.log
 
 # ML models / datasets
+!model.pkl
+!label_encoders.pkl
 *.pkl
 *.h5
 *.joblib
@@ -42,5 +44,3 @@ Thumbs.db
 
 # Git
 .git/
-
-
